@@ -1,6 +1,8 @@
 package application;
 
 
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -13,6 +15,8 @@ public class App {
                                 .email("kakaroto@gmail.com")
                                         .id(2)
                                                 .build();
+
+        SellerDao sellerDao = DaoFactory.createSellerDao();
 
         System.out.println(department);
         System.out.println(seller);
