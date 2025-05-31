@@ -137,5 +137,3 @@ Database connection parameters are configured in the `db.properties` file at the
 * `README.md`: This file.
 
 ---
-
-This README provides a comprehensive overview of the `demo-dao-jdbc` project.
