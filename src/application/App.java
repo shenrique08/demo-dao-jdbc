@@ -45,6 +45,42 @@ public class App {
         sellerDao.insert(seller1);
         System.out.println(seller1.getId());
 
+        System.out.println("\n=== TEST 5: Seller Update ===");
+        Seller sellerToUpdate = sellerDao.findById(1);
+
+        if (sellerToUpdate != null) {
+            System.out.println("Seller before update: " + sellerToUpdate);
+            sellerToUpdate.setName("Martha Wine");
+            sellerToUpdate.setEmail("martha.wine@gmail.com");
+            sellerToUpdate.setBaseSalary(62000.0);
+            sellerToUpdate.setBirthDate(LocalDate.of(1980, 1, 15));
+            Department existingDept = new Department(1, null);
+            sellerToUpdate.setDepartment(existingDept);
+
+            sellerDao.update(sellerToUpdate);
+            System.out.println("Update method called for seller ID: " + sellerToUpdate.getId());
+
+            Seller updatedSeller = sellerDao.findById(sellerToUpdate.getId());
+            System.out.println("Seller after update: " + updatedSeller);
+        } else {
+            System.out.println("Seller with ID 1 not found, cannot perform update test.");
+        }
+
+        // Example of how to test delete (if you have it)
+        // System.out.println("\n=== TEST 6: Seller Delete ===");
+        // int idToDelete = newSeller.getId(); // Or some other ID you want to test deletion with
+        // if (idToDelete != null) {
+        //     System.out.println("Attempting to delete seller with ID: " + idToDelete);
+        //     sellerDao.deleteById(idToDelete);
+        //     Seller deletedSeller = sellerDao.findById(idToDelete);
+        //     if (deletedSeller == null) {
+        //         System.out.println("Seller with ID " + idToDelete + " deleted successfully.");
+        //     } else {
+        //         System.out.println("Failed to delete seller with ID " + idToDelete + ". Seller still found: " + deletedSeller);
+        //     }
+        // } else {
+        //     System.out.println("No seller ID available from insert test to perform delete test.");
+        // }
 
     }
 }
